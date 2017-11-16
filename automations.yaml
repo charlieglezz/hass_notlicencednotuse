@@ -1,0 +1,24 @@
+#SE COLCOAN LOS AUTOMATIONS EN ESTE ARVHIVO
+  - alias: Llega a casa
+    trigger:
+      platform: state
+      entity_id: device_tracker.rgb
+      from: 'not_home'
+      to: 'home'
+    action:
+      - service: notify.ios_rgb
+        data_template:
+          message: >
+                LLegaste a casa {{now().strftime("%H:%M  %d %B")}}
+
+  - alias: Se va de casa
+    trigger:
+      platform: state
+      entity_id: device_tracker.rgb
+      from: 'home'
+      to: 'not_home'
+    action:
+      - service: notify.ios_rgb
+        data_template:
+          message: >
+                Te fuiste  {{now().strftime("%H:%M  %d %B")}}
