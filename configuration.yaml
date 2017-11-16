@@ -10,15 +10,13 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Mexico_City
-  # Radio del lugar "Casa"
-  radius: 500
 
 # ZONAS
 zone:
   - name: Trabajo
     latitude: 22.943378
     longitude: -102.715660
-    radius: 200
+    radius: 50
     icon: mdi:briefcase
 # Show links to resources in log and frontend
 introduction:
@@ -31,9 +29,7 @@ config:
 
 http:
   # Uncomment this to add a password (recommended!)
-  # api_password: PASSWORD
-  # Uncomment this if you are using SSL or running in Docker etc
-  # base_url: example.duckdns.org:8123
+    api_password: 123qwe
 
 # Checks for available updates
 # Note: This component will send some information about your system to

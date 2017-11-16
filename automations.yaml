@@ -9,7 +9,7 @@
       - service: notify.ios_rgb
         data_template:
           message: >
-                LLegaste a casa {{now().strftime("%H:%M  %d %B")}}
+                LLegaste a casa {{now().strftime("%H:%M  %d %^B")}}
 
   - alias: Se va de casa
     trigger:
@@ -21,4 +21,16 @@
       - service: notify.ios_rgb
         data_template:
           message: >
-                Te fuiste  {{now().strftime("%H:%M  %d %B")}}
+                Te fuiste  {{now().strftime("%H:%M  %d %^B")}}
+# Bateria baja del iphone
+  - alias: Bateria descargandose
+    trigger:
+      #platform: numeric_state
+      #entity_id: sensor.rgb_battery_level
+      #below: 74
+      platform: template
+      value_template: "{{ states.sensor.sensor.rgb_battery_level.state | int<10 }}"
+    action:
+      service: notify.ios_rgb
+      data:
+        message: BATERIA DESCARGANDO

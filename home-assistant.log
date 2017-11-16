@@ -1,4 +1,1 @@
-2017-11-16 14:47:12 ERROR (MainThread) [homeassistant.core] Timer got out of sync. Resetting
-2017-11-16 14:47:25 ERROR (SyncWorker_3) [plexapi] http://172.16.11.65:32400: (401) unauthorized
-2017-11-16 14:47:53 ERROR (MainThread) [homeassistant.core] Timer got out of sync. Resetting
-2017-11-16 14:49:45 WARNING (MainThread) [aiohttp.websocket] websocket connection is closing.
+2017-11-16 16:23:10 ERROR (SyncWorker_1) [plexapi] http://172.16.11.65:32400: (401) unauthorized
