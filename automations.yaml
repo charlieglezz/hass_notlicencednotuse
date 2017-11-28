@@ -34,3 +34,13 @@
       service: notify.ios_rgb
       data:
         message: BATERIA DESCARGANDO
+
+# Bateria cargando
+  - alias: Bateria cargando
+    trigger:
+      platform: template
+      value_template: "{{ states.sensor.sensor.rgb_battery_level.state | int>50 }}"
+    action:
+      service: notify.ios_rgb
+      data:
+        message: CARGANDO LA BATERIA (MAS DE 40 %)

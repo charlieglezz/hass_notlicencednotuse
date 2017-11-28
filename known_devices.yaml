@@ -1,7 +1,7 @@
 
 rgb:
   hide_if_away: false
-  icon:
+  icon: mdi:cellphone
   mac:
   name: rgb
   picture:

@@ -1,1 +1,70 @@
-2017-11-16 16:23:10 ERROR (SyncWorker_1) [plexapi] http://172.16.11.65:32400: (401) unauthorized
+2017-11-27 16:09:49 ERROR (MainThread) [homeassistant.components.sensor] Error while setting up platform transmission
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/urllib/request.py", line 1318, in do_open
+    encode_chunked=req.has_header('Transfer-encoding'))
+  File "/usr/lib/python3.6/http/client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.6/http/client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.6/http/client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.6/http/client.py", line 1026, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.6/http/client.py", line 964, in send
+    self.connect()
+  File "/usr/lib/python3.6/http/client.py", line 936, in connect
+    (self.host,self.port), self.timeout, self.source_address)
+  File "/usr/lib/python3.6/socket.py", line 724, in create_connection
+    raise err
+  File "/usr/lib/python3.6/socket.py", line 713, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/homeassistant/.homeassistant/deps/lib/python3.6/site-packages/transmissionrpc/httphandler.py", line 65, in request
+    response = self.http_opener.open(request, timeout=timeout)
+  File "/usr/lib/python3.6/urllib/request.py", line 526, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.6/urllib/request.py", line 544, in _open
+    '_open', req)
+  File "/usr/lib/python3.6/urllib/request.py", line 504, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.6/urllib/request.py", line 1346, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "/usr/lib/python3.6/urllib/request.py", line 1320, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 111] Connection refused>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/homeassistant/.homeassistant/deps/lib/python3.6/site-packages/transmissionrpc/client.py", line 205, in _http_query
+    result = self.http_handler.request(self.url, query, headers, timeout)
+  File "/home/homeassistant/.homeassistant/deps/lib/python3.6/site-packages/transmissionrpc/httphandler.py", line 77, in request
+    raise HTTPHandlerError(httpcode=error.reason.args[0], httpmsg=error.reason.args[1])
+transmissionrpc.error.HTTPHandlerError: HTTPHandlerError 111: Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/site-packages/homeassistant/helpers/entity_component.py", line 164, in _async_setup_platform
+    SLOW_SETUP_MAX_WAIT, loop=self.hass.loop)
+  File "/usr/lib/python3.6/asyncio/tasks.py", line 358, in wait_for
+    return fut.result()
+  File "/usr/lib/python3.6/asyncio/futures.py", line 245, in result
+    raise self._exception
+  File "/usr/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/lib/python3.6/site-packages/homeassistant/components/sensor/transmission.py", line 58, in setup_platform
+    host, port=port, user=username, password=password)
+  File "/home/homeassistant/.homeassistant/deps/lib/python3.6/site-packages/transmissionrpc/client.py", line 169, in __init__
+    self.get_session()
+  File "/home/homeassistant/.homeassistant/deps/lib/python3.6/site-packages/transmissionrpc/client.py", line 828, in get_session
+    self._request('session-get', timeout=timeout)
+  File "/home/homeassistant/.homeassistant/deps/lib/python3.6/site-packages/transmissionrpc/client.py", line 247, in _request
+    http_data = self._http_query(query, timeout)
+  File "/home/homeassistant/.homeassistant/deps/lib/python3.6/site-packages/transmissionrpc/client.py", line 223, in _http_query
+    raise TransmissionError('Request failed.', error)
+transmissionrpc.error.TransmissionError: Request failed. Original exception: HTTPHandlerError, "HTTPHandlerError 111: Connection refused"
